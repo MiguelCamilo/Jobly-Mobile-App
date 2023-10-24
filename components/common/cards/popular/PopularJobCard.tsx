@@ -3,7 +3,11 @@ import { View, Text } from 'react-native'
 
 import styles from './popularjobcard.style'
 
-const PopularJobCard = () => {
+export interface PopularJobCardProps {
+  item: string
+}
+
+const PopularJobCard = (props: PopularJobCardProps) => {
   return (
     <View>
       <Text>PopularJobCard</Text>

@@ -8,6 +8,8 @@ import { COLORS, SIZES } from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 
 const Popularjobs = () => {
+  const isLoading = false
+  const error = false
   const router = useRouter()
 
   return (
@@ -17,6 +19,24 @@ const Popularjobs = () => {
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.cardsContainer}>
+        {isLoading ? (
+          <ActivityIndicator size={"large"} color={COLORS.primary} />
+        ) : error ? (
+          <Text>Something went wrong!</Text>
+        ) : (
+          <FlatList
+            data={[1, 2, 3, 4]}
+            keyExtractor={(item ) => item?.job_id}
+            renderItem={({ job }) => (
+              <PopularJobCard item={job} />
+            )}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
+            horizontal
+          />
+        )}
       </View>
     </View>
   )
