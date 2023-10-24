@@ -17,7 +17,7 @@ const FONT = {
 };
 
 const SIZES = {
-  xSmall: 10,
+  xSmall: 8,
   small: 12,
   medium: 16,
   large: 20,
