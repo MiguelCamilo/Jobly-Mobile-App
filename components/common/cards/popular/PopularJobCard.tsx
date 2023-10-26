@@ -5,20 +5,26 @@ import styles from './popularjobcard.style';
 
 import { container, logoContainer, jobName } from './popularjobcard.style';
 
+import { checkImageURL } from '../../../../utils/checkImageUrl';
+
 export interface PopularJobCardProps {
   item: any;
-  selectedJob: any;
-  handleCardPress: () => void;
+  selectedJob: React.SetStateAction<string>;
+  handleCardPress: (item: any) => void;  
 }
 
-const PopularJobCard = (props: PopularJobCardProps) => {  
+const PopularJobCard = (props: PopularJobCardProps) => {
   return (
     <TouchableOpacity
       style={container(props?.selectedJob, props?.item)}
       onPress={() => props?.handleCardPress(props?.item)}>
       <TouchableOpacity style={logoContainer(props?.selectedJob, props?.item)}>
         <Image
-          source={{ uri: props?.item?.employer_logo }}
+          source={{
+            uri: checkImageURL(props?.item?.employer_logo)
+              ? props?.item?.employer_logo
+              : 'https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg',
+          }}
           resizeMode="contain"
           style={styles.logoImage}
         />

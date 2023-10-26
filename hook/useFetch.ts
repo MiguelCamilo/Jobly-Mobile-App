@@ -1,16 +1,19 @@
 import useSWR from 'swr';
-import fetcher from '../lib/fetcher';
-import { RAPID_API_KEY } from '@env'
+import fetcher from '../lib/fetcher'
+
 
 const useFetch = (endpoint: string, query: any) => {  
   const options = {
     method: 'GET',
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,
     params: {
-      query: query.query,      
+      job_id: query?.job_id,
+      query: query?.query,
+      page: query?.page,
+      num_pages: query?.num_pages,
     },
     headers: {
-      'X-RapidAPI-Key': "9df118b3aamsh95f91d68809818fp195de8jsn49df3108941e",
+      // 'X-RapidAPI-Key': "fe443f11f9mshd1e467ba9bf4b5cp18258ejsn6d69ae021c25",
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
     },
   };
