@@ -3,7 +3,14 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useFocusNotifyOnChangeProps } from './useFocusNotifyOnChangeProps';
 
-const fetchJobs = async (endpoint: string, query: any) => {
+interface QueryParamsProps {
+  job_id?: string;
+  query?: string;
+  page?: number;
+  num_pages?: number;
+}
+
+const fetchJobs = async (endpoint: string, query: QueryParamsProps) => {
   const options = {
     method: 'GET',
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,
@@ -26,7 +33,9 @@ const fetchJobs = async (endpoint: string, query: any) => {
 const useFetch = (endpoint: string, query: any) => {
   const notifyOnChangeProps = useFocusNotifyOnChangeProps();
   
-  return useQuery({queryKey: ['jobs'], queryFn: () => fetchJobs(endpoint, query), notifyOnChangeProps });
+  // by storing the endpoint and job_id in the queryKey, it allows for one api call
+  // to be made if the job hasnt been viewed yet, but if job that has been cached is clicked on, it wont refetch the data
+  return useQuery({queryKey: [endpoint, query?.job_id], queryFn: () => fetchJobs(endpoint, query), notifyOnChangeProps, staleTime: Infinity });
 }
 
 export default useFetch;

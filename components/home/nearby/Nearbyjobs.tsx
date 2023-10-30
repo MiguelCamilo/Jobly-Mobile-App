@@ -18,9 +18,7 @@ const NearbyJobs = () => {
     page: 2,
     num_pages: 1,
   });
-  const router = useRouter();
-  
-  console.log(fetchedJobs)
+  const router = useRouter();  
 
   return (
     <View style={styles.container}>
