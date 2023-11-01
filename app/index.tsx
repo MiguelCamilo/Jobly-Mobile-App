@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
@@ -10,12 +10,16 @@ import {
   Welcome,
 } from '../components';
 
-const Home = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
+const Home = () => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const queryClient = new QueryClient();
   const router = useRouter();
 
   return (
+    <QueryClientProvider client={queryClient}>
     <SafeAreaView
       style={{
         flex: 1,
@@ -58,6 +62,8 @@ const Home = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </QueryClientProvider>
+    
   );
 };
 

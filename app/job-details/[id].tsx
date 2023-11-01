@@ -35,9 +35,14 @@ const JobDetails = () => {
     data: currentJob,
     isLoading,
     error,
+    refetch
   } = useFetch('job-details', { job_id: params?.id });
 
-  const onRefresh = () => {};
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   const displayTabContent = () => {
     // using a switch
