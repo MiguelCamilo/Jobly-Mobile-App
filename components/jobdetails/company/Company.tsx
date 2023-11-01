@@ -11,6 +11,7 @@ interface CompanyProps {
   jobTitle: string;
   companyName: string;
   location: string;
+  employmentType: string;
 }
 
 const Company = (props: CompanyProps) => {
@@ -40,7 +41,8 @@ const Company = (props: CompanyProps) => {
             style={styles.locationImage}
             resizeMode="contain"
           />
-          <Text style={styles.locationName}>{props?.location}</Text>
+          <Text style={styles.locationName}>{props?.location} - </Text>
+          <Text style={styles.employmentTypeText}>{props?.employmentType}</Text>
         </View>
       </View>
     </View>

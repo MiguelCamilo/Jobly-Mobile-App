@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
     },
     loaderContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
         marginTop: SIZES.medium
     },
     footerContainer: {

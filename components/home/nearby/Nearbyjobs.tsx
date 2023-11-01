@@ -14,17 +14,17 @@ const NearbyJobs = () => {
     isLoading,
     error,
   } = useFetch('search', {
-    query: 'Software Engineers',
-    page: 2,
-    num_pages: 1,
+    query: 'Jobs',
+    date_posted: 'week',
   });
   const router = useRouter();  
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Nearby Jobs</Text>
+        <Text style={styles.headerTitle}>New Jobs</Text>
         <TouchableOpacity>
+          {/* TODO: implement show all button */}
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
       </View>

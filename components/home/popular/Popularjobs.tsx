@@ -23,8 +23,8 @@ const Popularjobs = () => {
     isLoading,
     error,
   } = useFetch('search', {
-    query: 'Software Engineers',
-    num_pages: '1',
+    query: 'Jobs',
+    remote_jobs_only: true,    
   });
 
   const router = useRouter();
@@ -38,6 +38,7 @@ const Popularjobs = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Popular Jobs</Text>
         <TouchableOpacity>
+          {/* TODO: implement show all button */}
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
       </View>

@@ -4,15 +4,14 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
+    flex: 1,
     padding: SIZES.small,
-    backgroundColor: "#FFF",
+    // backgroundColor: "#FFF",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
+    borderRadius: SIZES.medium,
+    marginRight: SIZES.medium,
   },
   likeBtn: {
     width: 55,

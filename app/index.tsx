@@ -11,7 +11,9 @@ import {
 } from '../components';
 
 const Home = () => {
-  const router = useRouter();  
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const router = useRouter();
 
   return (
     <SafeAreaView
@@ -42,7 +44,15 @@ const Home = () => {
             flex: 1,
             paddingHorizontal: SIZES.medium,
           }}>
-          <Welcome />
+          <Welcome 
+            searchQuery={searchQuery} 
+            setSearchQuery={setSearchQuery}
+            handleSearch={() => {
+              if(searchQuery) {
+                router.push(`/search/${searchQuery}`)
+              }
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>

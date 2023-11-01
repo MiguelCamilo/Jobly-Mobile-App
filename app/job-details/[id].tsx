@@ -19,6 +19,7 @@ import {
   Specifics,
 } from '../../components';
 
+import styles from '../../styles/search';
 import { COLORS, icons, SIZES } from '../../constants';
 
 const JobDetails = () => {
@@ -39,6 +40,7 @@ const JobDetails = () => {
   const onRefresh = () => {};
 
   const displayTabContent = () => {
+    // using a switch
     switch (activeTab) {
       case 'Qualifications':
         return (
@@ -50,9 +52,24 @@ const JobDetails = () => {
           />
         );
       case 'About':
-
+        return (
+          <JobAbout
+            title="About"
+            info={
+              currentJob?.data[0]?.job_description ??
+              'No Description Available.'
+            }
+          />
+        );
       case 'Responsibilities':
-
+        return (
+          <Specifics
+            title="Responsibilities"
+            points={
+              currentJob?.data[0]?.job_highlights?.Responsibilities ?? ['N/A']
+            }
+          />
+        );
       default:
         break;
     }
@@ -86,24 +103,29 @@ const JobDetails = () => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         {isLoading ? (
-          <ActivityIndicator size={'large'} color={COLORS.primary} />
+          <View style={styles.loaderContainer}>
+            <ActivityIndicator size="large" color={COLORS.tertiary} />
+          </View>
         ) : error ? (
           <Text>Something Went Wrong...</Text>
         ) : currentJob?.data?.length === 0 ? (
           <Text>No Data</Text>
         ) : (
-          <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
+          <View style={{ padding: SIZES.small, paddingBottom: 100 }}>
             <Company
               companyLogo={currentJob.data[0]?.employer_logo}
               jobTitle={currentJob.data[0]?.job_title}
               companyName={currentJob.data[0]?.employer_name}
               location={currentJob.data[0]?.job_country}
+              employmentType={currentJob.data[0]?.job_employment_type}
             />
+            <JobFooter url={currentJob?.data[0]?.job_google_link} />
             <JobTabs
               tabs={tabs}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
+
             {displayTabContent()}
           </View>
         )}

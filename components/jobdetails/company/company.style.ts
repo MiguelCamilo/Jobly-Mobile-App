@@ -56,6 +56,12 @@ const styles = StyleSheet.create({
     fontFamily: FONT.regular,
     marginLeft: 2,
   },
+  employmentTypeText: {
+    fontSize: SIZES.medium - 2,
+    color: COLORS.gray,
+    fontFamily: FONT.regular,
+    marginLeft: 2,
+  },
 });
 
 export default styles;

@@ -14,7 +14,13 @@ import { icons, SIZES } from '../../../constants';
 
 import { tab, tabText } from './welcome.style';
 
-const Welcome = () => {
+interface WelcomeProps {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  handleSearch: () => void;
+}
+
+const Welcome = (props: WelcomeProps) => {
   const [activeJobType, setActiveJobType] = React.useState('');
   const router = useRouter();
 
@@ -31,13 +37,15 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            value={''}
-            onChange={() => {}}
+            value={props?.searchQuery}
+            // in react native, we don't need e.target.value
+            // instead queryTextEvent.nativeEvent.text gives you the new value of the text input, which is what you want to pass to setSearchQuery
+            onChangeText={(queryText) => {props?.setSearchQuery(queryText)}}
             placeholder="What are you looking for?"
           />
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={props?.handleSearch}>
           <Image
             source={icons.search}
             resizeMode="contain"
