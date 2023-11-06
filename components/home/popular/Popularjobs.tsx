@@ -23,8 +23,7 @@ const Popularjobs = () => {
     isLoading,
     error,
   } = useFetch('search', {
-    query: 'Jobs',
-    remote_jobs_only: true,    
+    query: 'Jobs',     
   });
 
   const router = useRouter();
@@ -37,11 +36,7 @@ const Popularjobs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Jobs</Text>
-        <TouchableOpacity>
-          {/* TODO: implement show all button */}
-          <Text style={styles.headerBtn}>Show All</Text>
-        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Popular Jobs</Text>        
       </View>
 
       <View style={styles.cardsContainer}>

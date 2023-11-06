@@ -23,10 +23,10 @@ const NearbyJobs = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>New Jobs</Text>
-        <TouchableOpacity>
           {/* TODO: implement show all button */}
+        {/* <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={styles.cardsContainer}>

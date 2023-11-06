@@ -26,7 +26,7 @@ const JobSearch = () => {
     page: page,
   })
 
-  const handlePagination = (direction) => {
+  const handlePagination = (direction: string) => {
     if (direction === 'left' && page > 1) {
       setPage(page - 1);
       refetch();

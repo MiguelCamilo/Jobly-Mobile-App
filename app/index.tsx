@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { Stack, router as route, useRouter } from 'expo-router';
 
 import { COLORS, icons, images, SIZES } from '../constants';
 import {
@@ -13,13 +13,11 @@ import {
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = React.useState('');  
 
-  const queryClient = new QueryClient();
   const router = useRouter();
 
   return (
-    <QueryClientProvider client={queryClient}>
     <SafeAreaView
       style={{
         flex: 1,
@@ -61,8 +59,7 @@ const Home = () => {
           <Nearbyjobs />
         </View>
       </ScrollView>
-    </SafeAreaView>
-    </QueryClientProvider>
+    </SafeAreaView>    
     
   );
 };
