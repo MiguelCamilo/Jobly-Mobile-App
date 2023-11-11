@@ -55,6 +55,7 @@ const Welcome = (props: WelcomeProps) => {
       </View>
 
       <View style={styles.tabsContainer}>
+        <Text style={styles.headerTitle}>Filter jobs by: </Text>
         <FlatList
           keyExtractor={(item) => item} // key like .map()
           contentContainerStyle={{ columnGap: SIZES.small }}
@@ -64,6 +65,10 @@ const Welcome = (props: WelcomeProps) => {
             <TouchableOpacity
               style={tab(activeJobType, item)}
               onPress={() => {
+                if (activeJobType === item) {
+                  setActiveJobType('');
+                  return;
+                }
                 setActiveJobType(item);
                 router.push(`/search/${item}`);
               }}>

@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useFocusNotifyOnChangeProps } from './useFocusNotifyOnChangeProps';
 
+import { RAPID_API_KEY } from '@env'
+
 interface QueryParamsProps {
   query: string;
   job_id?: string;
@@ -25,7 +27,7 @@ const fetchJobs = async (endpoint: string, query: QueryParamsProps) => {
       date_posted: query?.date_posted
     },
     headers: {
-      'X-RapidAPI-Key': "9c49d5fdb0msh53ce5f16b7a2736p12ccf8jsncac80d11ccba",
+      'X-RapidAPI-Key': '730025402fmsh2475eab4a4e9ee1p1c6e0fjsn5b3b0857af4d',
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
     },
   };

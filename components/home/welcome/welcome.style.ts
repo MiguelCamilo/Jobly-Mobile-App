@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: SIZES.medium,
   },
+  headerTitle: {
+    fontSize: SIZES.large,
+    fontFamily: FONT.medium,
+    color: COLORS.primary,
+  },
   userName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.large,
