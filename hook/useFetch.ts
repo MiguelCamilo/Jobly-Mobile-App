@@ -27,7 +27,7 @@ const fetchJobs = async (endpoint: string, query: QueryParamsProps) => {
       date_posted: query?.date_posted
     },
     headers: {
-      'X-RapidAPI-Key': '730025402fmsh2475eab4a4e9ee1p1c6e0fjsn5b3b0857af4d',
+      'X-RapidAPI-Key': '',
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
     },
   };
