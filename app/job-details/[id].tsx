@@ -124,7 +124,7 @@ const JobDetails = () => {
               location={currentJob.data[0]?.job_country}
               employmentType={currentJob.data[0]?.job_employment_type}
             />
-            <JobFooter url={currentJob?.data[0]?.job_google_link} />
+            <JobFooter job_id={currentJob?.data[0]?.job_id} url={currentJob?.data[0]?.job_google_link} />
             <JobTabs
               tabs={tabs}
               activeTab={activeTab}
